@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omega HTML Tutorial</title>
+<style>
+* {margin: 0; padding: 0;box-sizing: border-box; }
+
+body 
+{ font-family: 'Roboto', sans-serif;
+background: linear-gradient(135deg, #2d3e50, #1b1b2f); color: #f0f0f0;padding: 0;overflow-x: hidden; animation: gradientAnimation 8s ease infinite;
+font-size: 16px;}
+
+@keyframes gradientAnimation 
+{0% {background: linear-gradient(135deg, #2d3e50, #2b1b2f);}
+50% {background: linear-gradient(135deg, #9b59b6, #2498db);}
+100% {background: linear-gradient(135deg, #2d3e50, #1b1b2f);}
+ }
+
+       
+header 
+{ text-align: center; padding: 80px 20px;
+background: rgba(0, 0, 0, 0.3);border-radius: 30px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6); margin-bottom: 20px;}
+
+header h1 
+{ font-size: 4rem; color: #ff6347;
+text-shadow: 0 0 15px rgba(255, 99, 71, 0.7), 0 0 30px rgba(255, 99, 71, 0.5); }
+
+header p 
+{font-size: 1.2rem;color: white; margin-top: 10px; opacity: 0.8;}
+       
+.menu-btn {
+font-size: 30px;
+position: fixed;
+top: 20px;
+left: 20px;
+cursor: pointer;
+color: orange;
+z-index: 1001; 
+}
+
+.side-menu {
+height: 100%;
+width: 250px;
+position: fixed;
+top: 0;
+left: -250px;
+background-color: #333;
+color: white;
+transition: left 0.3s ease; 
+padding-top: 60px;
+z-index: 1000; 
+}
+
+.side-menu a {
+display: block;
+color: white;
+padding: 16px;
+text-decoration: none;
+font-size: 22px;
+transition: background-color 0.3s;
+}
+
+.side-menu a:hover {
+    background-color: #555;
+}
+
+.menu-open .side-menu {
+    left: 0;
+}
+
+.menu-open .content {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+
+.content {
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+}
+  
+
+.container 
+{max-width: 1200 px;margin: 0 auto;padding: 10px; 
+
+.section 
+{ background: rgba(0, 0, 0,0.5);border-radius:35px;padding: 10px;
+margin-bottom: 40px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+transform: translateY(20px); transition: all 1.3s ease-in-out; }
+
+.section:hover 
+{transform: translateY(-5px);
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); }
+
+h2 
+{ font-size: 2.5rem; color: orange;
+margin-bottom: 15px; text-shadow: 0 0 10px rgba(255, 99, 71, 0.6);}
+
+p, ul 
+{font-size: 1.1rem; color: #fff; margin-bottom: 15px;}
+
+ul
+{list-style: none;}
+
+ul li::before { content: '✔️'; margin-right: 10px; color: #ff6347; }
+
+.code-box { background: #1d1f28; border-left: 5px solid #ff6347; padding: 20px;font-family: 'Courier New', Courier, monospace;
+color: #f0f0f0; border-radius: 8px;
+margin-top: 15px;line-height: 1.5;
+overflow-x: auto; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+
+pre 
+{background-color: transparent;color: inherit; white-space: pre-wrap; word-wrap: break-word;}
+
+       
+.btn 
+{display: inline-block; background: #ff6347;
+color: white; padding: 12px 30px; border-radius: 30px; font-size: 1rem;
+text-transform: uppercase;
+letter-spacing: 2px;
+transition: all 1.4s ease; margin-top: 20px;}
+
+
+.btn:hover 
+{ background: #f44336;transform: scale(1.1); }
+
+        
+footer 
+{ background: rgba(0, 0, 0, 0.8);color: #fff;
+text-align: center;padding: 25px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); margin-top: 50px;}
+
+
+@media (max-width: 800px) 
+{header h1 { font-size: 2.5rem; }
+
+nav a 
+{ font-size: 1rem; padding: 8px 15px; }
+.container 
+{padding: 15px; }
+
+.section 
+{ padding: 20px; }
+
+footer 
+{ font-size: 1rem; }
+
+ .try-it-yourself
+ { background: rgba(0, 0, 0, 0.7);
+ border-radius: 10px; padding: 20px;
+ margin-top: 40px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); }
+
+#codeInput 
+{ width: 97%; height: 200px; font-family: 'Courier New', Courier, monospace;
+background-color: #222; color: #fff;
+border: 2px solid #ff6347; border-radius: 8px; padding: 10px; font-size: 16px; resize: vertical;
+}
+
+#resultIframe 
+{ background-color: white; font-size: 16px;
+width: 100%; height: 400px; border: 1px solid #ff6347; margin-top: 20px; border-radius: 8px; }
+}
+    </style>
+</head>
+<body>
+   
+   <div class ="menu-btn" onclick="toggleMenu()">🎃Menu</div>
+ 
+<div class="side-menu" id="sideMenu">
+<a href="#section7">Home</a>
+<a href="#section1">INTRODUCTION </a>
+<a href="#section2">STRUCTURE </a>
+<a href="#section3">TAGS </a>
+<a href="#section8">About Me</a>
+</div>
+
+ 
+ 
+     <div class="container">
+<div id="section7" class="section">
+    <header>
+        <h1>🎃Easy🎃 HTML Tutorial</h1>
+        <p>Explore the Power of HTML</p>
+</header>
+</div>
+
+</div>
+       <div class="container">
+<div id="section1" class="section">
+<h2>What is HTML?</h2>
+<p>HTML (Hypertext Markup Language) is the backbone of web development. It structures content on the web using a series of tags that browsers can read and display.</p>
+
+<a href="https://www.w3schools.com/html/" class="btn">Learn More</a>
+</div>
+<div id="section2" class="section">
+<h2>Basic HTML Structure</h2>
+<p>Every HTML document has a basic structure. Here’s a simple example:</p>
+<div class="code-box">
+<pre>
+&lt!DOCTYPE html>
+&lthtml lang="en">
+&lthead>
+&ltmeta charset="UTF-8">
+&lttitle>My First Page&lt/title>
+&lt/head>
+&ltbody>
+&lth1>Welcome to My Website&lt/h1>
+&ltp>This is a paragraph.&lt/p>
+&lt/body>
+&lthtml>
+</pre>
+</div></div>
+
+<div id="section3" class="section">
+<h2>Common HTML Tags</h2>
+
+<ul><li><strong>&lt;h1&gt;</strong>: Main heading.</li>
+<li><strong>&lt;p&gt;</strong>: Paragraph text.</li>
+<li><strong>&lt;a&gt;</strong>: Hyperlink.</li>
+<li><strong>&lt;img&gt;</strong>: Image tag.</li>
+<li><strong>&lt;ul&gt; &lt;li&gt;</strong>: Unordered list items.</li><br>
+
+</ul>
+<p>Example of these tags:</p>
+<div class="code-box">
+<pre>
+<h1>This is a Heading</h1>
+<p>Here is a <a href="#">link</a>.</p>
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+</ul>
+</pre>
+</div></div>
+
+
+<div id="section4" class="section">
+<h2>HTML Forms</h2>
+<p>Forms are essential for capturing user input. Here's a simple form example:</p><br
+
+<p>&ltform action="/submit_form" method="POST"><br>&ltlabel for="name">Name:&lt/label>
+    &ltinput type="text" id="name" name="name" placeholder="Your full name" required><br>
+
+    
+    &ltlabel for="email">Email Address:</label><br>
+    &ltinput type="email" id="email" name="email" placeholder="Your email address" required></p>
+<div class="code-box">
+<pre>
+<form action="/submit" method="POST">
+<label for="name">Name:</label>
+<input type="text" id="name" name="name">
+<label for="email">Email:</label>
+<input type="email" id="email" name="email">
+<input type="submit" value="Submit">
+</form>
+</pre>
+</div></div>
+
+
+
+<div id="section5" class="section">
+<h2>HTML Images</h2>
+<p>Use the <code>&lt;img&gt;</code> tag to embed images in your web page:</p><p>you can add width and height to even out your picture Example:<br><br> &ltvolcan.jpg width=" " height=" "></p>
+<div class="code-box">
+<pre>
+<img src="file:///storage/emulated/0/Android/data/com.teejay.trebedit/files/TrebEdit user files/Sample project - Acme/mayon volcano.jpg" width="250" height="200">
+</pre>
+</div></di>
+<div id="section6" class="section">
+<h2>HTML Tables</h2>
+<p>HTMLables are useful for displaying tabular data:</p>
+<div class="code-box">
+<pre>
+<table>
+<tr><th>Name   </th><th>Age</th></tr>
+<tr><td>Carl   </td><td>10</td></tr>
+<tr><td>Jude   </td><td>7</td></tr>
+</table>
+</pre>
+</div></div>
+</div> 
+
+     <div class="container">
+       
+        <div class="try-it-yourself">
+            <h2>Try It Yourself Example</h2>
+            <p>Type your HTML code below and see the results:</p>
+            <textarea id="codeInput">
+<h1>Hello, World!</h1>
+<p>This is a sample HTML code.</p>
+            </textarea>
+            <br>
+            <button onclick="updateIframe()" class="btn">Run Code</button>
+
+            <h3>Result:</h3>
+            <iframe id="resultIframe"></iframe>
+        </div>
+        <h1>About Me</h1>
+   
+   <div class="container">
+<div id="section1" class="section">
+    <h4>The Creator of this website:</h4>
+    <img src="content://com.android.externalstorage.documents/tree/6361-6439%3Aactivity.html/document/6361-6439%3Aactivity.html%2Fcarl.jpg" width="270" height="190">
+
+ <tr><th>Name:Carl Jude P. Jumao-as   </th><div><th>Age:17</th></tr>
+    <tr><th>Gmail:carljude1026@gmail.com   </th><br>
+ <tr><th>FB Name:Carl Jude Jumao-as   </th>
+   
+    
+</div>
+</div>
+<tr><th>Name:Carl Jude P. Jumao-as   </th><div><th>Age:17</th></tr>
+    <tr><th>Gmail:carljude1026@gmail.com   </th><br>
+ <tr><th>FB Name:Carl Jude Jumao-as   </th>
+   
+    
+</div>
+</div>
+
+<div class="container">
+<div id="section2" class="section">
+<h1>Reflection</h1>
+<p>Ang napili kong disenyo ay Araw ng mga patay o Holloween dahil isa ito sa paborito kong pagdiriwang.<div>
+Ang mga na engkwentro ko sa pag-gawa ng tutorial na ito ay kung anong app ang gagamitin ko pero ang napili ko ay TrebEdit dahil alam ko kung pano ito gamitin subalit meron parin akong mga pagkakamali sa coding tulad ng color number nahirapan ako dito sa paghahanap ng mga kulay at number ng kulay dahil pwede mo lang ilagay ang mga simpleng kulay tulad ng red ,white at iba pa Kaya kailangan natin ng color number/ID upang gumana ang mga komplikadong kulay tulad ng dark green, light orange at iba pa. Susunod, ay ang pag aayos ng Code dahil sobrang tagal ko itong inayos pero dahil sa aking pag tyatiyaga nagawa ko naman ng maayos ang aking website kahit mahirap gumawa ng tutorial dito ito parin ang pinili ko dahil gusto kong mahasa ang galing ko sa pag code.   <br><br><br>Maraming salamat❤️ </p>
+</div>
+<nav>
+<div class="section">
+    <div id="section8" class="section">
+        
+<a href="#section7">Back</a>
+</nav>
+</div>
+<script>
+function toggleMenu(){ document.body.classList.toggle('menu-open');}
+</script>
+  <script>
+      
+function updateIframe()
+{ const code =
+document.getElementById('codeInput').value;
+
+const iframe = document.getElementById('resultIframe');
+      
+const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+iframeDoc.open();
+iframeDoc.write(code);
+iframeDoc.close();
+    }
+  </script>
+
+
+      
+<footer>
+<p> &copy; W3schools.com HTML Tutorial.</p>
+    </footer>
+
+</body>
+</html>
